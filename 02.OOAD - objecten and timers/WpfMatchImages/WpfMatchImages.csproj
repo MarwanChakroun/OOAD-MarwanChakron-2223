@@ -94,5 +94,103 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\bee.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\bird.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\birdhouse.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\cat.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\chicken.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\cow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\dog.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\egg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\hive.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\leash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\milk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\night.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\owl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\penguin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\post.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="img\snow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="birdhouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="post.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bird.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="bee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="chicken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="cow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="egg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="hive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="leash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="night.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="owl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="penguin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="milk.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

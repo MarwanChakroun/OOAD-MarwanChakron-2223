@@ -22,52 +22,52 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Tag="bee" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="0" Click="btnClick">
-            <Image Source="/img/bee.png"/>
+            <Image Source="bee.png"/>
         </Button>
         <Button Tag="bird" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="1" Click="btnClick">
-            <Image Source="/img/bird.png"/>
+            <Image Source="bird.png"/>
         </Button>
         <Button Tag="snow" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="0" Click="btnClick">
-            <Image Source="/img/snow.png"/>
+            <Image Source="snow.png"/>
         </Button>
         <Button Tag="cat" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="1" Click="btnClick">
-            <Image Source="/img/post.png"/>
+            <Image Source="post.png"/>
         </Button>
         <Button Tag="bird" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="0" Click="btnClick">
-            <Image Source="/img/birdhouse.png"/>
+            <Image Source="birdhouse.png"/>
         </Button>
         <Button Tag="cat" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="0" Click="btnClick">
-            <Image Source="/img/cat.png"/>
+            <Image Source="cat.png"/>
         </Button>
         <Button Tag="chicken" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="1" Click="btnClick">
-            <Image Source="/img/chicken.png"/>
+            <Image Source="chicken.png"/>
         </Button>
         <Button Tag="cow" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="1" Click="btnClick">
-            <Image Source="/img/cow.png"/>
+            <Image Source="cow.png"/>
         </Button>
         <Button Tag="dog" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="2" Click="btnClick">
-            <Image Source="/img/dog.png"/>
+            <Image Source="dog.png"/>
         </Button>
         <Button Tag="chicken" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="2" Click="btnClick">
-            <Image Source="/img/egg.png"/>
+            <Image Source="egg.png"/>
         </Button>
         <Button Tag="bee" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="2" Click="btnClick">
-            <Image Source="/img/hive.png"/>
+            <Image Source="hive.png"/>
         </Button>
         <Button Tag="dog" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="2" Click="btnClick">
-            <Image Source="/img/leash.png"/>
+            <Image Source="leash.png"/>
         </Button>
         <Button Tag="owl" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="3" Click="btnClick">
-            <Image Source="/img/night.png"/>
+            <Image Source="night.png"/>
         </Button>
         <Button Tag="owl" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="3" Click="btnClick">
-            <Image Source="/img/owl.png"/>
+            <Image Source="owl.png"/>
         </Button>
         <Button Tag="snow" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="3" Click="btnClick">
-            <Image Source="/img/penguin.png"/>
+            <Image Source="penguin.png"/>
         </Button>
         <Button Tag="cow" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="3" Click="btnClick">
-            <Image Source="/img/milk.png"/>
+            <Image Source="milk.png"/>
         </Button>
         <Label x:Name="lblTime" Foreground="Orange" FontStyle="Italic" FontSize="18px" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Grid.ColumnSpan="2" Grid.Row="4"/>
         <Label x:Name="lblAantal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.ColumnSpan="2" Grid.Row="4"/>
