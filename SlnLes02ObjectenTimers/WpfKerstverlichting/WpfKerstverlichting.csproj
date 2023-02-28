@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C835BE2-BA3E-4218-8FDC-4F3523182C6C}</ProjectGuid>
+    <ProjectGuid>{082132AF-705C-4B24-ABB6-F8080735A532}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfMatchImages</RootNamespace>
-    <AssemblyName>WpfMatchImages</AssemblyName>
+    <RootNamespace>WpfKerstverlichting</RootNamespace>
+    <AssemblyName>WpfKerstverlichting</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -94,23 +94,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Image\bee.png" />
-    <Resource Include="Image\bird.png" />
-    <Resource Include="Image\birdhouse.png" />
-    <Resource Include="Image\cat.png" />
-    <Resource Include="Image\chicken.png" />
-    <Resource Include="Image\cow.png" />
-    <Resource Include="Image\dog.png" />
-    <Resource Include="Image\egg.png" />
-    <Resource Include="Image\hive.png" />
-    <Resource Include="Image\leash.png" />
-    <Resource Include="Image\milk.png" />
-    <Resource Include="Image\night.png" />
-    <Resource Include="Image\owl.png" />
-    <Resource Include="Image\penguin.png" />
-    <Resource Include="Image\post.png" />
-    <Resource Include="Image\snow.png" />
+    <Resource Include="Img\kerstboom.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

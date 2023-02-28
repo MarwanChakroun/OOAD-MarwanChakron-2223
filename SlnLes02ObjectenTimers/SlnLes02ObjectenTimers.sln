@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMatchImages", "WpfMatchImages\WpfMatchImages.csproj", "{5C835BE2-BA3E-4218-8FDC-4F3523182C6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfKerstverlichting", "WpfKerstverlichting\WpfKerstverlichting.csproj", "{082132AF-705C-4B24-ABB6-F8080735A532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{5C835BE2-BA3E-4218-8FDC-4F3523182C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C835BE2-BA3E-4218-8FDC-4F3523182C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C835BE2-BA3E-4218-8FDC-4F3523182C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{082132AF-705C-4B24-ABB6-F8080735A532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082132AF-705C-4B24-ABB6-F8080735A532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082132AF-705C-4B24-ABB6-F8080735A532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082132AF-705C-4B24-ABB6-F8080735A532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,52 +22,52 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Tag="bee" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="0" Click="btnClick">
-            <Image Source="/Img/bee.png"/>
+            <Image Source="/Image/bee.png"/>
         </Button>
         <Button Tag="bird" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="1" Click="btnClick">
-            <Image Source="/Img/bird.png"/>
+            <Image Source="/Image/bird.png"/>
         </Button>
         <Button Tag="snow" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="0" Click="btnClick">
-            <Image Source="/Img/snow.png"/>
+            <Image Source="/Image/snow.png"/>
         </Button>
         <Button Tag="cat" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="1" Click="btnClick">
-            <Image Source="/Img/post.png"/>
+            <Image Source="/Image/post.png"/>
         </Button>
         <Button Tag="bird" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="0" Click="btnClick">
-            <Image Source="/Img/birdhouse.png"/>
+            <Image Source="/Image/birdhouse.png"/>
         </Button>
         <Button Tag="cat" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="0" Click="btnClick">
-            <Image Source="/Img/cat.png"/>
+            <Image Source="/Image/cat.png"/>
         </Button>
         <Button Tag="chicken" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="1" Click="btnClick">
-            <Image Source="/Img/chicken.png"/>
+            <Image Source="/Image/chicken.png"/>
         </Button>
         <Button Tag="cow" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="1" Click="btnClick">
-            <Image Source="/Img/cow.png"/>
+            <Image Source="/Image/cow.png"/>
         </Button>
         <Button Tag="dog" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="2" Click="btnClick">
-            <Image Source="/Img/dog.png"/>
+            <Image Source="/Image/dog.png"/>
         </Button>
         <Button Tag="chicken" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="2" Click="btnClick">
-            <Image Source="/Img/egg.png"/>
+            <Image Source="/Image/egg.png"/>
         </Button>
         <Button Tag="bee" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="2" Click="btnClick">
-            <Image Source="/Img/hive.png"/>
+            <Image Source="/Image/hive.png"/>
         </Button>
         <Button Tag="dog" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="2" Click="btnClick">
-            <Image Source="/Img/leash.png"/>
+            <Image Source="/Image/leash.png"/>
         </Button>
         <Button Tag="owl" Background="Orange" Width="97" Height="92" Grid.Column="0" Grid.Row="3" Click="btnClick">
-            <Image Source="/Img/night.png"/>
+            <Image Source="/Image/night.png"/>
         </Button>
         <Button Tag="owl" Background="Orange" Width="97" Height="92" Grid.Column="1" Grid.Row="3" Click="btnClick">
-            <Image Source="/Img/owl.png"/>
+            <Image Source="/Image/owl.png"/>
         </Button>
         <Button Tag="snow" Background="Orange" Width="97" Height="92" Grid.Column="2" Grid.Row="3" Click="btnClick">
-            <Image Source="/Img/penguin.png"/>
+            <Image Source="/Image/penguin.png"/>
         </Button>
         <Button Tag="cow" Background="Orange" Width="97" Height="92" Grid.Column="3" Grid.Row="3" Click="btnClick">
-            <Image Source="/Img/milk.png"/>
+            <Image Source="/Image/milk.png"/>
         </Button>
         <Label x:Name="lblTime" Foreground="Orange" FontStyle="Italic" FontSize="18px" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0" Grid.ColumnSpan="2" Grid.Row="4"/>
         <Label x:Name="lblAantal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.ColumnSpan="2" Grid.Row="4"/>
