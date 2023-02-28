@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 
-namespace WpfCopyVs2
+namespace WpfCopy
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -32,7 +32,7 @@ namespace WpfCopyVs2
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dialog.Filter = "Tekstbestanden|*.TXT;*.TEXT";
+            dialog.Filter = "Text Files (*.txt)|*.txt";
             string chosenFileName;
             if (dialog.ShowDialog() == true)
             {
@@ -53,7 +53,7 @@ namespace WpfCopyVs2
         {
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dialog.Filter = "Tekstbestanden|*.TXT;*.TEXT";
+            dialog.Filter = "Text Files (*.txt)|*.txt";
             dialog.FileName = "savedfile.txt";
             if (dialog.ShowDialog() == true)
             {
