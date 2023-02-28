@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfCopy", "WpfCopy\WpfCopy.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfFileInfo", "WpfFileInfo\WpfFileInfo.csproj", "{0A5633EB-0EBF-4A99-8352-2D838DA80ACB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleCsv", "ConsoleCsv\ConsoleCsv.csproj", "{B6944225-0ABC-4CA1-A8D4-3A5E4F47E451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{0A5633EB-0EBF-4A99-8352-2D838DA80ACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5633EB-0EBF-4A99-8352-2D838DA80ACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5633EB-0EBF-4A99-8352-2D838DA80ACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6944225-0ABC-4CA1-A8D4-3A5E4F47E451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6944225-0ABC-4CA1-A8D4-3A5E4F47E451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6944225-0ABC-4CA1-A8D4-3A5E4F47E451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6944225-0ABC-4CA1-A8D4-3A5E4F47E451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

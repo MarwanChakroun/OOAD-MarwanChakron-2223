@@ -36,7 +36,7 @@ namespace WpfFileInfo
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            dialog.Filter = "Tekstbestanden|.TXT;.TEXT";
+            dialog.Filter = "Text Files (*.txt)|*.txt";
 
             if (dialog.ShowDialog() == true)
             {
