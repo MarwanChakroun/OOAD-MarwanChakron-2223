@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfFileInfo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfFileInfo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btnChoice" Content="Kies bestand..." HorizontalAlignment="Left" Margin="114,92,0,0" VerticalAlignment="Top" Height="51" Width="147" Click="btnChoice_Click"/>
+        <Label Content="bestandsnaam:" HorizontalAlignment="Left" Margin="114,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="extensie:" HorizontalAlignment="Left" Margin="114,217,0,0" VerticalAlignment="Top"/>
+        <Label Content="gemaakt op:" HorizontalAlignment="Left" Margin="114,243,0,0" VerticalAlignment="Top"/>
+        <Label Content="mapnaam:" HorizontalAlignment="Left" Margin="114,269,0,0" VerticalAlignment="Top"/>
+        <Label Content="aantal woorden:" HorizontalAlignment="Left" Margin="114,295,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBestand" Content="" HorizontalAlignment="Left" Margin="208,191,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblExtensie" Content="" HorizontalAlignment="Left" Margin="175,217,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblGemaakt" Content="" HorizontalAlignment="Left" Margin="198,243,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMapnaam" Content="" HorizontalAlignment="Left" Margin="189,269,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblWoorden" Content="" HorizontalAlignment="Left" Margin="214,295,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblVoorkoomend" Content="" HorizontalAlignment="Left" Margin="241,321,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
