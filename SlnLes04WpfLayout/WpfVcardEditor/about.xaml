@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfVcardEditor.about"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfVcardEditor"
+        mc:Ignorable="d"
+        Title="About vCard Editor" Height="350" Width="250">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Image Source="/img/odisee.jpg" Grid.Row="0"/>
+        <TextBlock Margin="20 0 0 0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left"><Run FontWeight="Bold">Gemaakt door</Run><Run>: Marwan Chakroun</Run></TextBlock>
+        <TextBlock Margin="20 0 0 0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left"><Run FontWeight="Bold">Vak</Run><Run>: OO Application Devlopment</Run></TextBlock>
+        <TextBlock Margin="20 0 0 0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left"><Run FontWeight="Bold">Academiejaar</Run><Run>: 2022 - 2023</Run></TextBlock>
+        <Button x:Name="btnSluiten" Content="SLUITEN" Grid.Row="4"  Width="80" Height="30" Click="btnSluiten_Click"/>
+    </Grid>
+</Window>
