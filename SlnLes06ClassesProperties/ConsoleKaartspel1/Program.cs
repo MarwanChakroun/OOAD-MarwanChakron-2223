@@ -13,8 +13,11 @@ namespace ConsoleKaartspel1
             const int AANTAL_KAARTEN_HAND = 5;
             Deck deck = new Deck();
             deck.Schudden();
-            Speler spelerHans = new Speler("Hans");
-            Speler spelerRogier = new Speler("Rogier");
+            Deck deck2 = new Deck();
+            deck2.Schudden();
+            Speler spelerHans = new Speler("Hans", deck.Kaarten);
+            Speler spelerRogier = new Speler("Rogier", deck2.Kaarten);
+
             // deel kaarten uit
             for (int i = 0; i < AANTAL_KAARTEN_HAND; i++)
             {

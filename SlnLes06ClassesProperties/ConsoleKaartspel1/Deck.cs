@@ -22,28 +22,31 @@ namespace ConsoleKaartspel1
                     kaarten.Add(kaart);
                 }
             }
+            Kaarten = kaarten;
         }
 
         public void Schudden()
         {
+            Deck spel = new Deck();
             Random rnd = new Random();
-            int selectKaart = Kaarten.Count;
-            do
+            int aantal = spel.Kaarten.Count;
+            while (aantal > 1)
             {
-                selectKaart--;
-                int rndKaart = rnd.Next(selectKaart + 1);
-                Kaart temp = Kaarten[rndKaart];
-                Kaarten[rndKaart] = Kaarten[selectKaart];
-                Kaarten[selectKaart] = temp;
-            } while (selectKaart > 1);
+                aantal--;
+                int kaart = rnd.Next(aantal + 1);
+                Kaart value = spel.Kaarten[kaart];
+                spel.Kaarten[kaart] = spel.Kaarten[aantal];
+                spel.Kaarten[aantal] = value;
+            }
         }
 
         public Kaart NeemKaart()
         {
+            Deck spel = new Deck();
             Random rnd = new Random();
-            Kaart selectKaart = Kaarten[rnd.Next(Kaarten.Count())];
-            Kaarten.Remove(selectKaart);
-            return selectKaart;
+            Kaart krt = spel.Kaarten[rnd.Next(Kaarten.Count()) + 1];
+            Kaarten.Remove(krt);
+            return krt;
         }
     }
 
