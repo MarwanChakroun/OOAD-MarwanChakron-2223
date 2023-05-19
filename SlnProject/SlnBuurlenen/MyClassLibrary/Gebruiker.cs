@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace MyClassLibrary
 {
@@ -42,9 +45,12 @@ namespace MyClassLibrary
             geslacht = GESLACHT;
         }
 
-        public Gebruiker Login(string MAIL, string PASSWORD)
+        public List<Gebruiker> Login(string MAIL, string PASSWORD)
         {
+            List<Gebruiker> gebruikers = new List<Gebruiker>();
             Gebruiker gebruiker = new Gebruiker();
+            Gebruiker first = new Gebruiker();
+            gebruikers.Add(first);
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
@@ -54,11 +60,43 @@ namespace MyClassLibrary
                 SqlDataReader reader = comm.ExecuteReader();
                 while (reader.Read())
                 {
-                    int id = Convert.ToInt32(reader["id"]);
-                    string firstname = Convert.ToString(reader["firstname"]);
+                    gebruiker.id = Convert.ToInt32(reader["id"]);
+                    gebruiker.voornaam = Convert.ToString(reader["voornaam"]);
+                    gebruiker.familienaam = Convert.ToString(reader["achternaam"]);
+                    gebruiker.mail = Convert.ToString(reader["email"]);
+                    gebruiker.password = Convert.ToString(reader["paswoord"]);
+                    gebruiker.aanmakdatum = Convert.ToDateTime(reader["aanmaakdatum"]);
+                    gebruiker.geslacht = NumberToGender(Convert.ToInt32(reader["geslacht"]));
+                    //Convert image naar byte[]
+                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create((Uri)reader["profielfoto"]));
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        encoder.Save(ms);
+                        gebruiker.profielphoto = ms.ToArray();
+                    }
+                    gebruikers.Add(gebruiker);
                 }
             }
+            return gebruikers;
+        }
 
+        public geslacht NumberToGender(int i)
+        {
+            geslacht x = geslacht;
+            switch (i)
+            {
+                case 0:
+                    x = geslacht.man;
+                    break;
+                case 1:
+                    x = geslacht.vrouw;
+                    break;
+                case 2:
+                    x = geslacht.onbekend;
+                    break;
+            }
+            return x;
         }
 
     }

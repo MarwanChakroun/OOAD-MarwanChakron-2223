@@ -5,29 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfGebruiker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="260" Width="400">
+        Title="MainWindow" Height="240" Width="250">
     <Grid Background="#0e387a">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="0.7*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
+            <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
-        <Label Grid.Row="0" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" FontSize="20" Margin="0,20,0,10" Foreground="#9fafca" />
-        <TextBlock Grid.Row="1" Grid.Column="0" Margin="10" VerticalAlignment="Center" Text="Email:" Foreground="#9fafca" />
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="10" />
-        <TextBlock Grid.Row="2" Grid.Column="0" Margin="10" VerticalAlignment="Center" Text="Password:" Foreground="#9fafca" />
-        <PasswordBox Grid.Row="2" Grid.Column="1" Margin="10" />
-
-        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" Margin="10" Width="100" Background="#9fafca" Foreground="#0e387a" />
-        <Button Grid.Row="4" Grid.Column="1" Content="New" HorizontalAlignment="Right" Margin="10" Width="60" Background="#9fafca" Foreground="#0e387a" />
+        <Label Grid.Row="0" FontWeight="Bold" Content="Login" HorizontalAlignment="Center" FontSize="20" VerticalAlignment="Center" Foreground="#9fafca" />
+        <TextBox x:Name="tbxEmail" Text="Email" Grid.Row="1" Grid.Column="0" Height="20" Margin="10,0,10,0" GotFocus="tbxEmail_GotFocus" LostFocus="tbxEmail_LostFocus"/>
+        <TextBox x:Name="tbxPasword" Text="Paswoord" Grid.Row="2" Grid.Column="0" Height="20" Margin="10,0,10,0" GotFocus="tbxPasword_GotFocus" LostFocus="tbxPasword_LostFocus"/>
+        <Button x:Name="ButtonLogin" Grid.Row="3" Grid.Column="0" Height="25" Width="70" Margin="45,0,0,0" Content="Login" Background="#9fafca" Foreground="#0e387a" HorizontalAlignment="Left" Click="ButtonLogin_Click" />
+        <Button x:Name="ButtonNew" Grid.Row="3" Grid.Column="0" Width="70" Margin="135,3,0,3" Content="New User" Background="#9fafca" Foreground="#0e387a" HorizontalAlignment="Left" Click="ButtonNew_Click"/>
+        <Label Grid.Row="4" Name="lblLogin" HorizontalAlignment="Left" FontWeight="Bold" Foreground="#9fafca" />
     </Grid>
-
 </Window>
