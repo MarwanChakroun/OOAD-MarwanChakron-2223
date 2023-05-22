@@ -20,7 +20,7 @@ namespace WpfGebruiker
     {
         private string strEmail = "";
         private string strPWD = "";
-        public Gebruiker gebruiker;
+        public Gebruiker gebruiker = new Gebruiker();
         public MainWindow()
         {
             InitializeComponent();
@@ -44,15 +44,16 @@ namespace WpfGebruiker
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            if (gebruiker.Login(tbxEmail.Text, tbxPasword.Text).Count == 1)
+            if (gebruiker.Login(tbxEmail.Text, tbxPasword.Text).id == 0) 
             {
-                lblLogin.Content = "Foute login";
+                lblLogin.Content = "Foute login gegevens";
             }
             else
             {
-                Gebruiker gb = new Gebruiker();
-                gb = gebruiker.Login(tbxEmail.Text, tbxPasword.Text)[1];
-                lblLogin.Content = $"Welkom {gb.voornaam}";
+                lblLogin.Content = "Welkom " + gebruiker.Login(tbxEmail.Text, tbxPasword.Text).voornaam;
+                Menu window = new Menu(gebruiker.Login(tbxEmail.Text, tbxPasword.Text));
+                window.Show();
+                this.Close();
             }
         }
 

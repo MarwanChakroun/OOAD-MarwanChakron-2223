@@ -45,12 +45,12 @@ namespace MyClassLibrary
             geslacht = GESLACHT;
         }
 
-        public List<Gebruiker> Login(string MAIL, string PASSWORD)
+        public Gebruiker Login(string MAIL, string PASSWORD)
         {
-            List<Gebruiker> gebruikers = new List<Gebruiker>();
+            Random rnd = new Random();
+            Byte[] b = new Byte[10];
             Gebruiker gebruiker = new Gebruiker();
-            Gebruiker first = new Gebruiker();
-            gebruikers.Add(first);
+            Gebruiker login = new Gebruiker(0, "none", "none", "none", "none", DateTime.Now, b, geslacht.onbekend);
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
@@ -68,17 +68,15 @@ namespace MyClassLibrary
                     gebruiker.aanmakdatum = Convert.ToDateTime(reader["aanmaakdatum"]);
                     gebruiker.geslacht = NumberToGender(Convert.ToInt32(reader["geslacht"]));
                     //Convert image naar byte[]
-                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create((Uri)reader["profielfoto"]));
-                    using (MemoryStream ms = new MemoryStream())
+                    byte[] imageData = (byte[])reader["profielfoto"];
+                    gebruiker.profielphoto = imageData;
+                    if (gebruiker.mail == MAIL && gebruiker.password == PASSWORD)
                     {
-                        encoder.Save(ms);
-                        gebruiker.profielphoto = ms.ToArray();
+                        login = gebruiker;
                     }
-                    gebruikers.Add(gebruiker);
                 }
             }
-            return gebruikers;
+            return login;
         }
 
         public geslacht NumberToGender(int i)
