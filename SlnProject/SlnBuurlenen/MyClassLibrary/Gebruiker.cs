@@ -70,6 +70,7 @@ namespace MyClassLibrary
                     //Convert image naar byte[]
                     byte[] imageData = (byte[])reader["profielfoto"];
                     gebruiker.profielphoto = imageData;
+                    //
                     if (gebruiker.mail == MAIL && gebruiker.password == PASSWORD)
                     {
                         login = gebruiker;
