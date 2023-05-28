@@ -23,31 +23,78 @@ namespace WpfGebruiker
     {
         private readonly Foto fotoAuto = new Foto();
         private readonly auto autoRead = new auto();
+        List<auto> autoList = new List<auto>();
+        bool firstload = false;
         public Home(Gebruiker gb)
         {
             InitializeComponent();
-            List<auto> autos = autoRead.getallcar();
-            foreach (var i in autos)
+            autoList = autoRead.getallcar();
+            foreach (var i in autoList)
             {
-                pnlItems.Children.Add(addCard(i));   
+                addCard(i);
             }
         }
 
-        public StackPanel addCard(auto auto)
+        private void Checkfilter(object sender, RoutedEventArgs e)
+        {
+            autoList = autoRead.getallcar();
+            if (firstload == false)
+            {
+                firstload = true;
+            }
+            else
+            {
+               pnlItems.Children.Clear();
+            }
+            if (chkMotor != null && chkMotor.IsChecked == true && chktrok != null && chktrok.IsChecked == true)
+            {
+                foreach (var i in autoList)
+                {
+                    addCard(i);
+                }
+            }
+            else
+            {
+                if (chkMotor.IsChecked == true)
+                {
+                    foreach (var i in autoList)
+                    {
+                        if (i.type == 1)
+                        {
+                            addCard(i);
+                        }
+                    }
+                }
+
+                if (chktrok.IsChecked == true)
+                {
+                    foreach (var i in autoList)
+                    {
+                        if (i.type == 2)
+                        {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        public void addCard(auto auto)
         {
             Foto foto = fotoAuto.getFirstPhotoFromID(auto.id);
             var grid = new Grid();
-            grid.ColumnDefinitions.Add(new ColumnDefinition());
-            grid.ColumnDefinitions.Add(new ColumnDefinition());
+            grid.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(90, GridUnitType.Pixel)});
+            grid.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(180, GridUnitType.Pixel)});
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(20, GridUnitType.Pixel) });
             StackPanel pnl = new StackPanel();
+            pnl.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2E6DDA"));
             pnl.Children.Add(grid);
-            pnl.Width = 300;
-            pnl.Height = 200;
-            pnl.Margin = new Thickness(20);
-
+            pnl.Width = 260;
+            pnl.Height = 115;
+            pnl.Margin = new Thickness(10);
+            grid.Margin = new Thickness(10);
             Image img = new Image();
-            img.Width = 200;
-            img.Height = 100;
+            img.Width = 100;
             using (var ms = new System.IO.MemoryStream(foto.data))
             {
                 var image = new BitmapImage();
@@ -62,7 +109,7 @@ namespace WpfGebruiker
             Label lbl = new Label();
             lbl.Content = $"{auto.naam}";
             lbl.FontWeight = FontWeights.Bold;
-            lbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
+            lbl.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
             Grid.SetColumn(lbl, 1);
             grid.Children.Add(img);
             grid.Children.Add(lbl);
@@ -70,10 +117,12 @@ namespace WpfGebruiker
             {
                 Label lbl2 = new Label();
                 lbl2.Content = $"Merk: {auto.merk}";
-                lbl2.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
+                lbl2.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                lbl2.Margin = new Thickness(0, 20, 0, 5);
                 Label lbl3 = new Label();
                 lbl3.Content = $"Model: {auto.model}";
-                lbl3.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
+                lbl3.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                lbl3.Margin = new Thickness(0, 40, 0, 0);
                 grid.Children.Add(lbl2);
                 Grid.SetColumn(lbl2, 1);
                 grid.Children.Add(lbl3);
@@ -81,14 +130,14 @@ namespace WpfGebruiker
             }
             Button btn = new Button();
             btn.Tag = auto.id;
+            btn.Margin = new Thickness(0,0,0,150);
             btn.Content = "Details";
             btn.FontWeight = FontWeights.Bold;
-            btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
-            btn.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-            btn.HorizontalAlignment = HorizontalAlignment.Right;
-            btn.VerticalAlignment = VerticalAlignment.Bottom;
+            btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btn.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
             pnl.Children.Add(btn);
-            return pnl;
+            Grid.SetColumn(btn, 2);
+            //if (pnlItems == null){pnlItems.Children.Add(pnl);}
         }
     }
 }
