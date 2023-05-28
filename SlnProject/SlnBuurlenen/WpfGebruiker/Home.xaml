@@ -9,12 +9,13 @@
       Title="Home">
 
     <Grid>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal">
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 0 40 0" Orientation="Horizontal">
             <Label Foreground="#0e387a" FontWeight="Bold" Content="Type:" Margin="0 0 10 0"/>
             <CheckBox Content="Gemotoriseerd" Margin="0 7 10 0" />
             <CheckBox Content="Getrokken" Margin="0 7 0 0" />
         </StackPanel>
-        <WrapPanel x:Name="pnlItems" Margin="10">
-        </WrapPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="pnlItems" Margin="30 10 10 10"></WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

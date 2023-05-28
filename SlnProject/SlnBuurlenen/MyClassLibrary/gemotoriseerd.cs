@@ -16,7 +16,6 @@ namespace MyClassLibrary
 
         public gemotoriseerd()
         {
-            // Constructeur vide
         }
 
         public gemotoriseerd(int ID, string Naam, string Beschrijving, int Bouwjaar, string Merk, string Model, int Type, int EigenaarID, int Transmissie, int Brandstof)
@@ -55,6 +54,7 @@ namespace MyClassLibrary
                     motorVoertuig.transmissie = Convert.ToInt32(reader["transmissie"]);
                     motorVoertuig.brandstof = Convert.ToInt32(reader["brandstof"]);
                     motorVoertuigen.Add(motorVoertuig);
+                    motorVoertuig = new gemotoriseerd();
                 }
                 return motorVoertuigen;
             }

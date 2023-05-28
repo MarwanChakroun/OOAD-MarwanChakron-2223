@@ -60,6 +60,7 @@ namespace MyClassLibrary
                     trokVoertuig.afmeting = Convert.ToString(reader["afmetingen"]);
                     trokVoertuig.geremd = Convert.ToBoolean(reader["geremd"]);
                     trokVoertuigen.Add(trokVoertuig);
+                    trokVoertuig = new getrokken();
                 }
                 return trokVoertuigen;
             }
