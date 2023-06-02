@@ -9,11 +9,10 @@
       Title="Home">
 
     <Grid>
-        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
-            <Label Foreground="#0e387a" FontWeight="Bold" Content="Type:" Margin="0 0 10 0"/>
-            <CheckBox Name="chkMotor" Content="Gemotoriseerd" Margin="0 7 10 0" IsChecked="True" Checked="Checkfilter"/>
-            <CheckBox Name="chktrok" Content="Getrokken" Margin="0 7 0 0" IsChecked="True" Checked="Checkfilter"/>
-        </StackPanel>
+        <Label Foreground="#0e387a" FontWeight="Bold" Content="Type:" Margin="0 0 10 0"/>
+        <RadioButton Name="rbALl" GroupName="rb" Content="All" Margin="40 7 20 0" IsChecked="True"/>
+        <RadioButton Name="rbMotor" GroupName="rb" Content="Gemotoriseerd" Margin="80 7 10 0"/>
+        <RadioButton Name="rbtrok" GroupName="rb" Content="Getrokken" Margin="185 7 10 0"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <WrapPanel Name="pnlItems" Margin="10 50 10 10">
             </WrapPanel> 

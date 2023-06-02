@@ -86,5 +86,25 @@ namespace MyClassLibrary
             }
         }
 
+        public void AddMotor(gemotoriseerd gm, int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                SqlCommand comm = new SqlCommand("INSERT INTO Voertuig (naam, beschrijving, bouwjaar, merk, model, type, eigenaar_id, transmissie, brandstof, eigenaar_id) VALUES (@naam, @beschrijving, @bouwjaar, @merk, @model, @type, @eigenaarId, @transmissie, @brandstof, @idOwner)", conn);
+                comm.Parameters.AddWithValue("@naam", gm.naam);
+                comm.Parameters.AddWithValue("@beschrijving", gm.beschrijving);
+                comm.Parameters.AddWithValue("@bouwjaar", gm.bouwjaar);
+                comm.Parameters.AddWithValue("@merk", gm.merk);
+                comm.Parameters.AddWithValue("@model", gm.model);
+                comm.Parameters.AddWithValue("@type", gm.type);
+                comm.Parameters.AddWithValue("@eigenaarId", gm.eigenaarId);
+                comm.Parameters.AddWithValue("@transmissie", gm.transmissie);
+                comm.Parameters.AddWithValue("@brandstof", gm.brandstof);
+                comm.Parameters.AddWithValue("@idOwner", id);
+                comm.ExecuteScalar();
+            }
+        }
+
     }
 }

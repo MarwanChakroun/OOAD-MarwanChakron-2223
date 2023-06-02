@@ -1,0 +1,25 @@
+﻿<Page x:Class="WpfGebruiker.Voertuigen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfGebruiker"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Voertuigen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Name="btnToevoegenVoertuig" Foreground="#ffffff" Background="#2E6DDA" Height="30" Width="100" HorizontalAlignment="Left" FontWeight="Bold" Content="➕ Toevoegen" Margin="5 0 5 0" Click="btnToevoegenVoertuig_Click"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <WrapPanel Name="pnlCars" Margin="10 50 10 10">
+                </WrapPanel>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</Page>

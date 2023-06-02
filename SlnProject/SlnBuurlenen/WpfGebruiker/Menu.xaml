@@ -12,10 +12,11 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="10">
-            <Button Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Home" Width="100" Height="30" Margin="0 0 0 10" />
-            <Button Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Ontleningen" Width="100" Height="30" Margin="0 0 0 10" />
-            <Button Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Voertuigen" Width="100" Height="30" />
+            <Button Name="btnHome" Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Home" Width="100" Height="30" Margin="0 0 0 10" Click="btnHome_Click" />
+            <Button Name="btnOntlening" Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Ontleningen" Width="100" Height="30" Margin="0 0 0 10" Click="btnOntlening_Click" />
+            <Button Name="btnVoertuigen" Background="#0e387a" Foreground="#9fafca" FontWeight="Bold" Content="Voertuigen" Width="100" Height="30" Click="btnVoertuigen_Click" />
+            <Button Name="btnLogout" Background="#2E6DDA" Foreground="#ffffff" FontWeight="Bold" Content="Afmelden 🏠" Width="100" Height="30" Margin="0 10 0 0" Click="btnLogout_Click" />
         </StackPanel>
-        <Frame x:Name="MainFrame" Grid.Column="1" Margin="10" />
+        <Frame x:Name="MainFrame" Grid.Column="1" Margin="10" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

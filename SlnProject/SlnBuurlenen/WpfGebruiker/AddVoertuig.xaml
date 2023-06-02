@@ -1,0 +1,113 @@
+﻿<Window x:Class="WpfGebruiker.AddVoertuig"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfGebruiker"
+        mc:Ignorable="d"
+        Title="AddVoertuig" Height="540" Width="800" Background="#9fafca">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Voertuig Toevoegen" Foreground="#0e387a" FontWeight="Bold" FontSize="18"/>
+        <StackPanel Grid.Row="1">
+            <Label Grid.Row="0" Content="Uploaden foto's" Foreground="#0e387a"/>
+            <Button Width="100" Height="30" HorizontalAlignment="Left" Content="Uploaden" Margin="5 0 0 0"/>
+        </StackPanel>
+        <WrapPanel Grid.Row="2" Orientation="Horizontal">
+            <Image x:Name="img1" Width="200" Height="100" Source="/img/nophoto.jpg" Margin="75 0 0 0"/>
+            <Image x:Name="img2" Width="200" Height="100" Source="/img/nophoto.jpg" Margin="25 0 0 0"/>
+            <Image x:Name="img3" Width="200" Height="100" Source="/img/nophoto.jpg" Margin="25 0 0 0"/>
+        </WrapPanel>
+        <StackPanel Margin="0 5 0 0" Grid.Row="3">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Naam:"/>
+                <TextBox Name="tbxnaam" Width="150" Margin="5 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Beschrijving:"/>
+                <TextBox Name="tbxBeschrijving" Width="300" Height="50" Margin="5 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Bouwjaar:"/>
+                <TextBox Name="tbxJaar" Width="50" Margin="5 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Merk:"/>
+                <TextBox Name="tbxMerk" Width="150" Margin="5 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Model:"/>
+                <TextBox Name="tbxModel" Width="150" Margin="5 0 0 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontWeight="Bold" Text="Type voertuig:"/>
+                <ComboBox Name="cmbType" Width="120" Margin="5 0 0 0" SelectionChanged="cmbType_SelectionChanged">
+                    <ComboBoxItem Content="Motor"/>
+                    <ComboBoxItem Content="Getrokken"/>
+                </ComboBox>
+            </StackPanel>
+            <Border Margin="0 5 0 5" BorderBrush="#0e387a" BorderThickness="1" Width="Auto" Height="2"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Visibility="Collapsed" Name="stplMotor">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Transmissie:"/>
+                        <ComboBox Name="cmbTransmissie" Width="120" Margin="5 0 0 0">
+                            <ComboBoxItem Content="Manueel"/>
+                            <ComboBoxItem Content="Automatisch"/>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Brandstof:"/>
+                        <ComboBox Name="cmbBrandstof" Width="120" Margin="5 0 0 0">
+                            <ComboBoxItem Content="Benzine"/>
+                            <ComboBoxItem Content="Diesel"/>
+                            <ComboBoxItem Content="LPG"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Visibility="Collapsed" Name="stplGetrokken">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Gewicht(kg):"/>
+                        <TextBox Name="tbxGewicht" Width="50" Margin="5 0 0 0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Maxbelasting(kg):"/>
+                        <TextBox Name="tbxMaxbelasting" Width="50" Margin="5 0 0 0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Afmeting:"/>
+                        <TextBox Name="tbxAfmeting" Width="150" Margin="5 0 0 0"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontWeight="Bold" Text="Geremd:"/>
+                        <ComboBox Name="cmbGeremd" Width="120" Margin="5 0 0 0">
+                            <ComboBoxItem Content="Ja"/>
+                            <ComboBoxItem Content="Nee"/>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Border Margin="0 5 0 5" BorderBrush="#0e387a" BorderThickness="1" Width="Auto" Height="2"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnAnnuleren" Content="Annuleren" Background="Red" Foreground="White" Height="30" Width="90" Margin="10" Click="btnAnnuleren_Click"/>
+            <Button Name="btnToevoegen" Content="Toevogen" Background="#2E6DDA" Foreground="White" Height="30" Width="90" Margin="10" Click="btnToevoegen_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

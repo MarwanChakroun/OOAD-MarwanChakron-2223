@@ -33,6 +33,13 @@ namespace MyClassLibrary
         {
         }
 
+        public Gebruiker(int ID, string VOORNAAM, string FAMILIENAAM)
+        {
+            id = ID;
+            voornaam = VOORNAAM;
+            familienaam = FAMILIENAAM;
+        }
+
         public Gebruiker(int ID,string VOORNAAM,string FAMILIENAAM, string MAIL,string PASSWORD,DateTime AANMAAKDATUM,byte[] PHOTO,geslacht GESLACHT)
         {
             id = ID;
@@ -78,6 +85,29 @@ namespace MyClassLibrary
                 }
             }
             return login;
+        }
+
+        public Gebruiker GetUserById(int userId)
+        {
+            Gebruiker gebruiker = new Gebruiker();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM Gebruiker WHERE id = @userId", conn);
+                comm.Parameters.AddWithValue("@userId", userId);
+                SqlDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    gebruiker.id = Convert.ToInt32(reader["id"]);
+                    gebruiker.voornaam = Convert.ToString(reader["voornaam"]);
+                    gebruiker.familienaam = Convert.ToString(reader["achternaam"]);
+                    gebruiker.mail = Convert.ToString(reader["email"]);
+                    gebruiker.password = Convert.ToString(reader["paswoord"]);
+                    gebruiker.aanmakdatum = Convert.ToDateTime(reader["aanmaakdatum"]);
+                    gebruiker.geslacht = NumberToGender(Convert.ToInt32(reader["geslacht"]));
+                }
+            }
+            return gebruiker;
         }
 
         public geslacht NumberToGender(int i)

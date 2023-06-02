@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace MyClassLibrary
 {
@@ -42,6 +43,7 @@ namespace MyClassLibrary
                     foto.idAuto = Convert.ToInt32(reader["voertuig_id"]);
                     foto.data = (byte[])reader["data"];
                     fotos.Add(foto);
+                    foto = new Foto();
                 }
                 return fotos;
             }
@@ -64,6 +66,19 @@ namespace MyClassLibrary
                 }
                 return foto;
             }
+        }
+
+        public BitmapImage DataToImage(Foto foto)
+        {
+            var image = new BitmapImage();
+            using (var ms = new System.IO.MemoryStream(foto.data))
+            {
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+            }
+            return image;
         }
     }
 }

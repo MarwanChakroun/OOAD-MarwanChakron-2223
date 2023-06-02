@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MyClassLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using MyClassLibrary;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,37 +17,38 @@ using System.Windows.Shapes;
 namespace WpfGebruiker
 {
     /// <summary>
-    /// Logique d'interaction pour Home.xaml
+    /// Interaction logic for Voertuigen.xaml
     /// </summary>
-    public partial class Home : Page
+    public partial class Voertuigen : Page
     {
         private readonly Foto fotoAuto = new Foto();
         private readonly auto autoRead = new auto();
         List<auto> autoList = new List<auto>();
         Gebruiker actualuser = new Gebruiker();
-        public Home(Gebruiker gb)
+        public Voertuigen(Gebruiker gb)
         {
             InitializeComponent();
             actualuser = gb;
-            autoList = autoRead.getallcar();
+            autoList = autoRead.getallOfOwner(gb.id);
             foreach (var i in autoList)
             {
-                pnlItems.Children.Add(addCard(i));
+                pnlCars.Children.Add(addCard(i));
 
             }
         }
+
         public StackPanel addCard(auto auto)
         {
             Foto foto = fotoAuto.getFirstPhotoFromID(auto.id);
             var grid = new Grid();
-            grid.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(90, GridUnitType.Pixel)});
-            grid.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(180, GridUnitType.Pixel)});
-            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(20, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(90, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(180, GridUnitType.Pixel) });
+            grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(20, GridUnitType.Pixel)});
             StackPanel pnl = new StackPanel();
             pnl.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2E6DDA"));
             pnl.Children.Add(grid);
             pnl.Width = 260;
-            pnl.Height = 115;
+            pnl.Height = 130;
             pnl.Margin = new Thickness(10);
             grid.Margin = new Thickness(10);
             Image img = new Image();
@@ -85,18 +86,59 @@ namespace WpfGebruiker
                 grid.Children.Add(lbl3);
                 Grid.SetColumn(lbl3, 1);
             }
-            Button btn = new Button();
-            btn.Tag = auto.id;
-            btn.Margin = new Thickness(0,0,0,150);
-            btn.Content = "Details";
-            btn.FontWeight = FontWeights.Bold;
-            btn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-            btn.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0e387a"));
-            btn.Click += (sender, e) =>
+
+            StackPanel stackPanel = new StackPanel();
+            stackPanel.Orientation = Orientation.Horizontal;
+            stackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+
+            Button btnDelete = new Button();
+            btnDelete.Margin = new Thickness(0,0,5,0);
+            btnDelete.Width = 60;
+            btnDelete.Height = 24;
+            btnDelete.Content = "Delete";
+            btnDelete.FontWeight = FontWeights.Bold;
+            btnDelete.Background = Brushes.Red;
+            btnDelete.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btnDelete.Click += (sender, e) =>
+            {
+                autoRead.DeleteAuto(auto.id);
+                pnlCars.Children.Clear();
+                autoList = autoRead.getallOfOwner(actualuser.id);
+                foreach (var i in autoList)
+                {
+                    pnlCars.Children.Add(addCard(i));
+
+                }
+            };
+            stackPanel.Children.Add(btnDelete);
+
+            Button btnEdit = new Button();
+            btnEdit.Margin = new Thickness(0,0,5,0);
+            btnEdit.Width = 60;
+            btnEdit.Height = 24;
+            btnEdit.Content = "Edit";
+            btnEdit.FontWeight = FontWeights.Bold;
+            btnEdit.Background = Brushes.SteelBlue;
+            btnEdit.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btnEdit.Click += (sender, e) =>
+            {
+
+            };
+            stackPanel.Children.Add(btnEdit);
+
+            Button btnDetails = new Button();
+            btnDelete.Margin = new Thickness(0,0,5,0); ;
+            btnDetails.Width = 60;
+            btnDetails.Height = 24;
+            btnDetails.Content = "Info";
+            btnDetails.FontWeight = FontWeights.Bold;
+            btnDetails.Background = Brushes.DarkGray;
+            btnDetails.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            btnDetails.Click += (sender, e) =>
             {
                 if (auto.type == 1)
-                { 
-                    DetailsGemotoriseerd page = new DetailsGemotoriseerd(auto, actualuser); 
+                {
+                    DetailsGemotoriseerd page = new DetailsGemotoriseerd(auto, actualuser);
                     page.Show();
                 }
 
@@ -106,9 +148,15 @@ namespace WpfGebruiker
                     page.Show();
                 }
             };
-            pnl.Children.Add(btn);
-            Grid.SetColumn(btn, 2);
+            stackPanel.Children.Add(btnDetails);
+            pnl.Children.Add(stackPanel);
             return pnl;
+        }
+
+        private void btnToevoegenVoertuig_Click(object sender, RoutedEventArgs e)
+        {
+            AddVoertuig page = new AddVoertuig(actualuser);
+            page.Show();
         }
     }
 }

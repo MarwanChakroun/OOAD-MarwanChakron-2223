@@ -46,5 +46,67 @@ namespace MyClassLibrary
                 return autos;
             }
         }
+
+        public List<auto> getallOfOwner(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                List<auto> autos = new List<auto>();
+                auto auto = new auto();
+                conn.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM Voertuig WHERE eigenaar_id = @id", conn);
+                comm.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = comm.ExecuteReader();
+                while (reader.Read())
+                {
+                    auto.id = Convert.ToInt32(reader["id"]);
+                    auto.naam = Convert.ToString(reader["naam"]);
+                    auto.beschrijving = Convert.ToString(reader["beschrijving"]);
+                    auto.bouwjaar = Convert.ToInt32(reader["bouwjaar"]);
+                    auto.merk = Convert.ToString(reader["merk"]);
+                    auto.model = Convert.ToString(reader["model"]);
+                    auto.type = Convert.ToInt32(reader["type"]);
+                    auto.eigenaarId = Convert.ToInt32(reader["eigenaar_id"]);
+                    autos.Add(auto);
+                    auto = new auto();
+                }
+                return autos;
+            }
+        }
+
+        public auto GetCarById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                auto auto = new auto();
+                conn.Open();
+                SqlCommand comm = new SqlCommand("SELECT * FROM Voertuig WHERE id = @id", conn);
+                comm.Parameters.AddWithValue("@id", id);
+                SqlDataReader reader = comm.ExecuteReader();
+                if (reader.Read())
+                {
+                    auto.id = Convert.ToInt32(reader["id"]);
+                    auto.naam = Convert.ToString(reader["naam"]);
+                    auto.beschrijving = Convert.ToString(reader["beschrijving"]);
+                    auto.bouwjaar = Convert.ToInt32(reader["bouwjaar"]);
+                    auto.merk = Convert.ToString(reader["merk"]);
+                    auto.model = Convert.ToString(reader["model"]);
+                    auto.type = Convert.ToInt32(reader["type"]);
+                    auto.eigenaarId = Convert.ToInt32(reader["eigenaar_id"]);
+                }
+                return auto;
+            }
+        }
+
+        public void DeleteAuto(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                SqlCommand comm = new SqlCommand("DELETE FROM Voertuig WHERE id=@delete", conn);
+                comm.Parameters.AddWithValue("@delete", id);
+                comm.ExecuteNonQuery();
+            }
+        }
     }
 }

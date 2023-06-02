@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="auto.cs" />
+    <Compile Include="ontlening.cs" />
     <Compile Include="Foto.cs" />
     <Compile Include="Gebruiker.cs" />
     <Compile Include="gemotoriseerd.cs" />
