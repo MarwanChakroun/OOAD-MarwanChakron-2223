@@ -12,18 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MyClassLibrary;
 
 namespace WpfAdmin
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Home.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Home : Page
     {
-        public MainWindow()
+        List<Kapper> kappers = Kapper.GetAllKappers();
+        public Home()
         {
             InitializeComponent();
-            mainframe.Content = new Home();
+            foreach(Gebruiker kapper in kappers)
+            {
+                lbKappers.Items.Add(kapper);
+            }
+            
         }
     }
 }
