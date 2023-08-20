@@ -9,7 +9,16 @@
       Title="Home">
 
     <Grid>
-        <ListBox x:Name="lbKappers" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="175*"/>
+            <RowDefinition Height="113*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="2" Background="LightGray" x:Name="PanelKappers" />
+        <ListBox Grid.Row="3" x:Name="lbKappers" Margin="0,0,0,67" />
+        <Label Content="Filter op specialiteit: " HorizontalAlignment="Left" Margin="27,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" x:Name="cbFilters" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="160"/>
 
     </Grid>
 </Page>

@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MyClassLibrary;
 
-namespace WpfAdmin
+namespace WpfKlant
 {
     /// <summary>
     /// Logique d'interaction pour Home.xaml
@@ -38,6 +38,7 @@ namespace WpfAdmin
                 }
 
                 StackPanel mainsp = new StackPanel();
+                
                 mainsp.Margin = new Thickness(10, 5, 0, 0);
                 mainsp.Width = 250;
 
@@ -63,14 +64,19 @@ namespace WpfAdmin
                 PanelKappers.Children.Add(mainsp);
 
 
-                lbKappers.Items.Add(kapper);
             }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             initPanel(Kapper.GetKappersBySpec((Specialiteit)cbFilters.SelectedItem));
-            
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Afspraak afsp = new Afspraak(false);
+            afsp.Show();
         }
 
         public Home()
@@ -78,7 +84,7 @@ namespace WpfAdmin
             InitializeComponent();
             cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
             initPanel(Kapper.GetAllKappers());
-            
+
         }
     }
 }
