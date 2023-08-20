@@ -78,7 +78,12 @@ namespace WpfKlant
             Afspraak afsp = new Afspraak(false);
             afsp.Show();
         }
-
+        
+        private void btnLoginClick(object sender, RoutedEventArgs e)
+        {
+            Login lgn = new Login();
+            lgn.Show();
+        }
         public Home()
         {
             InitializeComponent();
