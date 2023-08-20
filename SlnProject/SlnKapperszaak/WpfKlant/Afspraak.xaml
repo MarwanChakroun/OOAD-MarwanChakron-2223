@@ -27,20 +27,20 @@
    
         <WrapPanel Grid.Row="3" x:Name="wpSignup" Background="LightSlateGray" Margin="23,16,23,18" Orientation="Horizontal" >
             <Label Content="Voornaam:" Width="80" Height="25" />
-            <TextBox Width="170" Height="25" />
+            <TextBox x:Name="txtbVoornaam" Width="170" Height="25" />
             <Label Content="Achternaam:" Width="80" Height="25" />
-            <TextBox Width="170" Height="25" />
+            <TextBox x:Name="txtbAchternaam" Width="170" Height="25" />
             <Label Content="Geslacht:" Width="80" Height="25" />
-            <RadioButton Width="60" Height="25" VerticalContentAlignment="Center">Man</RadioButton>
-            <RadioButton Width="60" Height="25" VerticalContentAlignment="Center">Vrouw</RadioButton>
-            <RadioButton Width="90" Height="25" VerticalContentAlignment="Center">Onbekend</RadioButton>
+            <RadioButton x:Name="rbopt1" Width="60" Height="25" VerticalContentAlignment="Center">Man</RadioButton>
+            <RadioButton x:Name="rbopt2" Width="60" Height="25" VerticalContentAlignment="Center">Vrouw</RadioButton>
+            <RadioButton x:Name="rbopt3" Width="90" Height="25" VerticalContentAlignment="Center">Onbekend</RadioButton>
             <Label Content="Login:" Width="80" Height="25" />
-            <TextBox Width="170" Height="25" />
+            <TextBox x:Name="txtbLogin" Width="170" Height="25" />
             <Label Content="Paswoord:" Width="80" Height="25" />
-            <TextBox Width="170" Height="25" />
+            <TextBox x:Name="txtbPaswoord" Width="170" Height="25" />
 
         </WrapPanel>
-        <Button Content="Bevestigen" HorizontalAlignment="Left" Margin="15,61,0,0" VerticalAlignment="Top" Width="91" Height="27" Grid.Row="4"/>
+        <Button x:Name="btnBevestigen" Click="btnBevestigen_Click" Content="Bevestigen" HorizontalAlignment="Left" Margin="15,61,0,0" VerticalAlignment="Top" Width="91" Height="27" Grid.Row="4"/>
         <WrapPanel x:Name="wpKapper" Grid.Row="1"/>
 
     </Grid>

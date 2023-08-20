@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MyClassLibrary;
 
 namespace WpfKlant
 {
@@ -23,7 +24,12 @@ namespace WpfKlant
         public MainWindow()
         {
             InitializeComponent();
-            mainframe.Content = new Home();
+            mainframe.Content = new Home(this);
+        }
+
+        public void ReloadFrame(Gebruiker usr)
+        {
+            mainframe.Content = new Home(usr);
         }
     }
 }

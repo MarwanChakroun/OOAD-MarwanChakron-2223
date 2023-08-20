@@ -21,6 +21,8 @@ namespace WpfKlant
     /// </summary>
     public partial class Home : Page
     {
+        Gebruiker usr = new Gebruiker(-1, "", "", "", "", eGeslacht.Null, eRol.Klant);
+
         public void initPanel(List<Kapper> kappersinp)
         {
             PanelKappers.Children.Clear();
@@ -75,21 +77,32 @@ namespace WpfKlant
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Afspraak afsp = new Afspraak(false);
+            Afspraak afsp = new Afspraak(usr);
             afsp.Show();
         }
-        
+
+        private MainWindow Mainwin;
         private void btnLoginClick(object sender, RoutedEventArgs e)
         {
-            Login lgn = new Login();
+            Login lgn = new Login(Mainwin);
             lgn.Show();
         }
-        public Home()
+        public Home(MainWindow mw)
         {
+            Mainwin = mw;
             InitializeComponent();
             cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
             initPanel(Kapper.GetAllKappers());
 
+        }
+
+        public Home(Gebruiker user)
+        {
+            InitializeComponent();
+            cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
+            initPanel(Kapper.GetAllKappers());
+            lblWelcome.Content = "Welcome " + user.Voornaam;
+            usr = user;
         }
     }
 }

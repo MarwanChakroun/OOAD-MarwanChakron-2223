@@ -25,11 +25,13 @@ namespace WpfKlant
     {
 
         static string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+        private MainWindow Mainwin;
 
 
-        public Login()
+        public Login(MainWindow mainwininp)
         {
             InitializeComponent();
+            Mainwin = mainwininp;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,17 +57,20 @@ namespace WpfKlant
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand($"select * from Gebruiker where login like '{txtbUsername}' and paswoord like '{hashpsw}'", conn))
+                using (SqlCommand cmd = new SqlCommand($"select * from Gebruiker where login like '{txtbUsername.Text}' and paswoord like '{hashpsw}'", conn))
                 {
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
-                            lblComment.Content = "correct combination";
+                            lblComment.Content = "Connected";
+                            Mainwin.ReloadFrame(Gebruiker.GetGebByUsername(txtbUsername.Text));
+                            this.Close();
+                            //Mainwin.ReloadFrame(new Gebruiker(1, "yassine", "httch", "kmx", "yaya", eGeslacht.Man, eRol.Admin));
                         }
                         else
                         {
-                            lblComment.Content = reader["login"];
+                            lblComment.Content = "Wrong combination";
                         }
                         
                     }

@@ -21,7 +21,8 @@
         <Label Content="Filter op specialiteit: " HorizontalAlignment="Left" Margin="27,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontSize="16" Height="32" Width="155"/>
         <ComboBox SelectionChanged="ComboBox_SelectionChanged" x:Name="cbFilters" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="160" Height="22"/>
         <Button Click="Button_Click" Content="Afspraak maken" HorizontalAlignment="Left" Margin="32,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="117" Height="26"/>
-        <Button Content="Log in" Click="btnLoginClick" HorizontalAlignment="Left" Margin="704,20,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
+        <Button Content="Log in" Click="btnLoginClick" HorizontalAlignment="Left" Margin="671,21,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
+        <Label x:Name="lblWelcome" Content="Label" HorizontalAlignment="Right" Margin="0,45,33,0" VerticalAlignment="Top" Width="191"/>
 
     </Grid>
 </Page>

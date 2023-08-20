@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
+
 using MyClassLibrary;
 
 namespace WpfKlant
@@ -20,11 +22,13 @@ namespace WpfKlant
     /// </summary>
     public partial class Afspraak : Window
     {
-        public Afspraak(bool ingelogd)
+        Gebruiker usr;
+        public Afspraak(Gebruiker usrinp)
         {
             InitializeComponent();
             cbKappers.ItemsSource = Kapper.GetAllKappers();
-            wpSignup.Visibility = ingelogd? Visibility.Hidden : Visibility.Visible;
+            usr = usrinp;
+            wpSignup.Visibility = (usrinp.Id == -1) ? Visibility.Visible : Visibility.Hidden;
         }
 
         public void ShowKapper(Kapper kp)
@@ -73,5 +77,45 @@ namespace WpfKlant
             ShowKapper((Kapper)cbKappers.SelectedItem);
         }
 
+        private void btnBevestigen_Click(object sender, RoutedEventArgs e)
+        {
+            Gebruiker User = usr;
+            if(usr.Id == -1)
+            {
+                eGeslacht gesl;
+
+                if (txtbVoornaam.Text == "" || txtbAchternaam.Text == "" || txtbLogin.Text == "" || txtbPaswoord.Text == "")
+                {
+                    return;
+                }
+
+                if (rbopt1.IsChecked == true)
+                    gesl = eGeslacht.Man;
+                else if (rbopt2.IsChecked == true)
+                    gesl = eGeslacht.Vrouw;
+                else if (rbopt3.IsChecked == true)
+                    gesl = eGeslacht.OnBekend;
+                else
+                    return;
+
+                string hashpsw = "";
+                using (SHA256 sha = SHA256.Create())
+                {
+                    byte[] passwordBytes = Encoding.UTF8.GetBytes(txtbPaswoord.Text);
+                    byte[] hashBytes = sha.ComputeHash(passwordBytes);
+                    StringBuilder sb = new StringBuilder();
+                    foreach (byte b in hashBytes)
+                    {
+                        sb.Append(b.ToString("x2"));
+                    }
+                    hashpsw = sb.ToString();
+                }
+
+                User = new Gebruiker(-1, txtbVoornaam.Text, txtbAchternaam.Text, txtbLogin.Text, hashpsw, gesl, eRol.Klant)
+                Gebruiker.ParseNewGebruiker(User);
+            }
+            
+
+        }
     }
 }

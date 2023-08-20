@@ -92,6 +92,43 @@ namespace MyClassLibrary
             return Gebruikers;
         }
 
+        static public void ParseNewGebruiker(Gebruiker geb)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [Gebruiker] ([voornaam] ,[achternaam],[login],[paswoord],[geslacht],[rol]) " +
+                    $"VALUES ('{geb.Voornaam}','{geb.Achternaam}','{geb.Login}','{geb.Password}','{(int)geb.Geslacht}','{(int)geb.Rol}')", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+        static public Gebruiker GetGebByUsername(string usrname)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM [Gebruiker] where login like '{usrname}'", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Gebruiker(Convert.ToInt32(reader["id"]), Convert.ToString(reader["voornaam"]), Convert.ToString(reader["achternaam"]),
+                                Convert.ToString(reader["login"]), Convert.ToString(reader["paswoord"]), (eGeslacht)Convert.ToInt32(reader["geslacht"]), (eRol)Convert.ToInt32(reader["rol"]),
+                                (reader["email"] == null) ? String.Empty : Convert.ToString(reader["email"]),
+                                (reader["gsm"] == DBNull.Value) ? String.Empty : Convert.ToString(reader["gsm"]));
+                        }
+
+                    }
+                }
+                conn.Close();
+            }
+            return new Gebruiker(-1,"","","","",eGeslacht.Null, eRol.Klant);
+        }
        
 
         public override string ToString()
