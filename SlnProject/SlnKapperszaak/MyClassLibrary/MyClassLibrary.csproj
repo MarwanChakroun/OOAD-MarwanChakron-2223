@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Afspraak.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Gebruiker.cs" />
     <Compile Include="Kapper.cs" />

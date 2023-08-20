@@ -15,16 +15,18 @@
             <RowDefinition Height="7*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Afspraak maken" HorizontalAlignment="Left" Margin="15,22,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="37" Width="162"/>
-        <Label Grid.Row="0" Content="Voorkeurskapper:" HorizontalAlignment="Left" Margin="15,73,0,0" VerticalAlignment="Top" Height="25" Grid.RowSpan="2" Width="102"/>
-        <ComboBox Grid.Row="0" x:Name="cbKappers" SelectionChanged="ComboBox_SelectionChanged" Margin="139,73,107,98" Grid.RowSpan="2"/>
+        <Label Grid.Row="0" Content="Voorkeurskapper:" HorizontalAlignment="Left" Margin="15,64,0,0" VerticalAlignment="Top" Height="25" Width="102"/>
+        <ComboBox Grid.Row="0" x:Name="cbKappers" SelectionChanged="ComboBox_SelectionChanged" Margin="137,64,109,9"/>
         <WrapPanel HorizontalAlignment="Center" Grid.Row="2" Margin="0,0,0,156" Grid.RowSpan="2" Width="320">
             <Label Content="Datum:" HorizontalAlignment="Left" Height="25" Width="50" VerticalAlignment="Top"/>
-            <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <DatePicker x:Name="dpDatum" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Label Content="Uur:" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="30" Height="24"/>
-            <DatePicker HorizontalAlignment="Left"  VerticalAlignment="Top" Width="67"/>
+            <ComboBox x:Name="cbHour" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="67">
+
+            </ComboBox>
         </WrapPanel>
 
-   
+
         <WrapPanel Grid.Row="3" x:Name="wpSignup" Background="LightSlateGray" Margin="23,16,23,18" Orientation="Horizontal" >
             <Label Content="Voornaam:" Width="80" Height="25" />
             <TextBox x:Name="txtbVoornaam" Width="170" Height="25" />
@@ -42,6 +44,7 @@
         </WrapPanel>
         <Button x:Name="btnBevestigen" Click="btnBevestigen_Click" Content="Bevestigen" HorizontalAlignment="Left" Margin="15,61,0,0" VerticalAlignment="Top" Width="91" Height="27" Grid.Row="4"/>
         <WrapPanel x:Name="wpKapper" Grid.Row="1"/>
+        <Label x:Name="lblComment" Content="Label" HorizontalAlignment="Left" Margin="15,10,0,0" Grid.Row="4" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

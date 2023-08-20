@@ -87,13 +87,20 @@ namespace WpfKlant
             Login lgn = new Login(Mainwin);
             lgn.Show();
         }
+
+        private void btnAfspraakClick(object sender, RoutedEventArgs e)
+        {
+            Login lgn = new Login(Mainwin);
+            lgn.Show();
+        }
+        
         public Home(MainWindow mw)
         {
             Mainwin = mw;
             InitializeComponent();
             cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
             initPanel(Kapper.GetAllKappers());
-
+            btnAfspraakbeheren.Visibility = Visibility.Hidden;
         }
 
         public Home(Gebruiker user)
@@ -102,6 +109,7 @@ namespace WpfKlant
             cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
             initPanel(Kapper.GetAllKappers());
             lblWelcome.Content = "Welcome " + user.Voornaam;
+            btnAfspraakbeheren.Visibility = Visibility.Visible;
             usr = user;
         }
     }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Security.Cryptography;
+using System.Configuration;
+using System.Data.SqlClient;
 
 using MyClassLibrary;
 
@@ -23,12 +25,21 @@ namespace WpfKlant
     public partial class Afspraak : Window
     {
         Gebruiker usr;
+        static string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
         public Afspraak(Gebruiker usrinp)
         {
             InitializeComponent();
             cbKappers.ItemsSource = Kapper.GetAllKappers();
             usr = usrinp;
             wpSignup.Visibility = (usrinp.Id == -1) ? Visibility.Visible : Visibility.Hidden;
+
+            for (int i = 0; i < 8; i++)
+            {
+                cbHour.Items.Add(new TimeSpan(9 + i, 30,0));
+                cbHour.Items.Add(new TimeSpan(10 + i, 00,0));
+            }
+
         }
 
         public void ShowKapper(Kapper kp)
@@ -79,6 +90,24 @@ namespace WpfKlant
 
         private void btnBevestigen_Click(object sender, RoutedEventArgs e)
         {
+            if (cbKappers.SelectedIndex == -1)
+            {
+                lblComment.Content = "Kies eerst een voorkeurskapper";
+                return;
+            }
+
+            if (dpDatum.SelectedDate < DateTime.Now)
+            {
+                lblComment.Content = "Kies eerst een geldig datum";
+                return;
+            }
+
+            if (cbHour.SelectedIndex == -1)
+            {
+                lblComment.Content = "Kies eerst een uur";
+            }
+
+
             Gebruiker User = usr;
             if(usr.Id == -1)
             {
@@ -111,10 +140,21 @@ namespace WpfKlant
                     hashpsw = sb.ToString();
                 }
 
-                User = new Gebruiker(-1, txtbVoornaam.Text, txtbAchternaam.Text, txtbLogin.Text, hashpsw, gesl, eRol.Klant)
+                User = new Gebruiker(-1, txtbVoornaam.Text, txtbAchternaam.Text, txtbLogin.Text, hashpsw, gesl, eRol.Klant);
                 Gebruiker.ParseNewGebruiker(User);
             }
-            
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                Kapper kp = cbKappers.SelectedItem as Kapper;
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [Afspraak] ([datum] ,[tijd],[opmerking],[klant_id],[kapper_id]) " +
+                    $"VALUES ('{dpDatum.SelectedDate.Value.ToString("yyyy-MM-dd")}','{cbHour.SelectedItem.ToString()}','opmerking','{User.Id}','{kp.Id}')", conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+                lblComment.Content = "Afspraak gebookt met succes"
+            }
 
         }
     }

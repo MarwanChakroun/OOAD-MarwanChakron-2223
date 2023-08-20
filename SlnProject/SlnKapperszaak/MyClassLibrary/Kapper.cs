@@ -105,6 +105,39 @@ namespace MyClassLibrary
             return Kappers;
         }
 
+        static public Kapper GetKapperById(int id)
+        {
+            Kapper kapper = null;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"SELECT id, voornaam, achternaam, login, paswoord, geslacht, rol, indiensttreding, profielfoto FROM [Gebruiker] WHERE id = {id}", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            BitmapImage img = new BitmapImage();
+                            if (reader["profielfoto"] != DBNull.Value)
+                            {
+                                img = new BitmapImage();
+                                img.BeginInit();
+                                img.CacheOption = BitmapCacheOption.OnLoad;
+                                img.StreamSource = new System.IO.MemoryStream((byte[])reader["profielfoto"]);
+                                img.EndInit();
+                            }
+
+                            kapper = new Kapper(Convert.ToInt32(reader["id"]), Convert.ToString(reader["voornaam"]), Convert.ToString(reader["achternaam"]), Convert.ToString(reader["login"]), Convert.ToString(reader["paswoord"]), (eGeslacht)Convert.ToInt32(reader["geslacht"]), (eRol)Convert.ToInt32(reader["rol"]), (reader["indiensttreding"] == DBNull.Value) ? DateTime.MinValue : Convert.ToDateTime(reader["indiensttreding"]), img, Specialiteit.GetSpecialiteiten(Convert.ToInt32(reader["id"])));
+
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            return kapper;
+        }
+
         public string GetSpecsString()
         {
             string specs = "";
