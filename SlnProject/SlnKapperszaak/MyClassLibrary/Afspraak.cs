@@ -29,7 +29,7 @@ namespace MyClassLibrary
             Kpper = kpprinp;
         }
 
-        static public List<Afspraak> GetAfspraakByKlant(Gebruiker usr)
+        static public List<Afspraak> GetAfspraken(Gebruiker usr)
         {
             List<Afspraak> Afspraken = new List<Afspraak>();
             using (SqlConnection conn = new SqlConnection(connString))
@@ -50,6 +50,44 @@ namespace MyClassLibrary
                 conn.Close();
             }
             return Afspraken;
+        }
+
+        static public bool ParseAfspraak(Afspraak afsp)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [Afspraak] ([datum] ,[tijd],[opmerking],[klant_id],[kapper_id]) " +
+                    $"VALUES ('{afsp.Datum.ToString("yyyy-MM-dd")}','{afsp.Tijd.ToString()}','opmerking','{afsp.Klant.Id}','{afsp.Kpper.Id}')", conn))
+                {
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                    return true;
+                }
+                
+            }
+            return false;
+        }
+
+        static public void DeleteAfspraak(Afspraak afsp)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"DELETE FROM [Afspraak] where id = {afsp.Id}", conn))
+                {
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                }
+
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{Datum.DayOfWeek} {Datum.ToString("dd/MM/yyyy")} om {Tijd.ToString()} - {Kpper.Voornaam}";
         }
 
     }

@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfKlant"
         mc:Ignorable="d"
-        Title="KLANT - Afspraken beheren" Height="296" Width="382">
+        Title="KLANT - Afspraken beheren" Height="343" Width="382">
     <Grid>
         <Label Content="Mijn Afspraken" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <ListBox x:Name="lbAfspraken" Margin="10,49,10,85"/>
+        <ListBox SelectionChanged="lbAfspraken_SelectionChanged" x:Name="lbAfspraken" Margin="10,49,10,127"/>
+        <Label Content="Details" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblDate" Content="" HorizontalAlignment="Left" Margin="15,242,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblKapper" Content="" HorizontalAlignment="Left" Margin="15,273,0,0" VerticalAlignment="Top"/>
+        <Button Content="Annuleren" Click="btnAnnuleren_Click" HorizontalAlignment="Left" Margin="284,281,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
 
     </Grid>
 </Window>

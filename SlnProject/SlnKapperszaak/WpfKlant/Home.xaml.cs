@@ -90,8 +90,8 @@ namespace WpfKlant
 
         private void btnAfspraakClick(object sender, RoutedEventArgs e)
         {
-            Login lgn = new Login(Mainwin);
-            lgn.Show();
+            afpbeheren afp = new afpbeheren(usr);
+            afp.Show();
         }
         
         public Home(MainWindow mw)

@@ -143,19 +143,12 @@ namespace WpfKlant
                 User = new Gebruiker(-1, txtbVoornaam.Text, txtbAchternaam.Text, txtbLogin.Text, hashpsw, gesl, eRol.Klant);
                 Gebruiker.ParseNewGebruiker(User);
             }
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                Kapper kp = cbKappers.SelectedItem as Kapper;
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [Afspraak] ([datum] ,[tijd],[opmerking],[klant_id],[kapper_id]) " +
-                    $"VALUES ('{dpDatum.SelectedDate.Value.ToString("yyyy-MM-dd")}','{cbHour.SelectedItem.ToString()}','opmerking','{User.Id}','{kp.Id}')", conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                conn.Close();
-                lblComment.Content = "Afspraak gebookt met succes"
-            }
 
+            Kapper kp = cbKappers.SelectedItem as Kapper;
+            MyClassLibrary.Afspraak afsp = new MyClassLibrary.Afspraak(-1, dpDatum.SelectedDate.Value, TimeSpan.Parse(cbHour.SelectedItem.ToString()) ,
+                "", User, kp);
+
+            lblComment.Content = MyClassLibrary.Afspraak.ParseAfspraak(afsp) ? "Afspraak gebookt met succes" : "Afspraak kon niet gereserveerd worden";
         }
     }
 }

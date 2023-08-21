@@ -60,7 +60,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Afspraak.xaml">
+    <Page Include="Afspraakwin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -79,8 +79,8 @@
     <Compile Include="Afpbeheren.xaml.cs">
       <DependentUpon>Afpbeheren.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Afspraak.xaml.cs">
-      <DependentUpon>Afspraak.xaml</DependentUpon>
+    <Compile Include="Afspraakwin.xaml.cs">
+      <DependentUpon>Afspraakwin.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

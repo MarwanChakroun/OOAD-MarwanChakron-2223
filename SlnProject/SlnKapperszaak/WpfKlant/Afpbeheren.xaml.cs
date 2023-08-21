@@ -20,14 +20,40 @@ namespace WpfKlant
     /// </summary>
     public partial class afpbeheren : Window
     {
-        public afpbeheren(Gebruiker klant)
+        Gebruiker Klant;
+        public afpbeheren(Gebruiker klantinp)
         {
             InitializeComponent();
-            foreach (Afspraak afsp in Afspraak.GetAfspraakByKlant(klant))
+            Klant = klantinp;
+            foreach (MyClassLibrary.Afspraak item in MyClassLibrary.Afspraak.GetAfspraken(Klant))
             {
-                lbAfspraken.Items.Add(afsp);
+                lbAfspraken.Items.Add(item);
             }
 
+            //lbAfspraken.ItemsSource = MyClassLibrary.Afspraak.GetAfspraken(Klant);
+
+        }
+
+        private void lbAfspraken_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lbAfspraken.SelectedIndex != -1)
+            {
+                lblDate.Content = lbAfspraken.SelectedIndex;
+                MyClassLibrary.Afspraak afsp = lbAfspraken.SelectedItem as MyClassLibrary.Afspraak;
+                lblDate.Content = $"Tijdstip: {afsp.Datum.DayOfWeek} {afsp.Datum.Day} {afsp.Datum.Month} {afsp.Datum.Year} om {afsp.Tijd.ToString()}";
+                lblKapper.Content = $"Kapper: {afsp.Kpper.Voornaam} {afsp.Kpper.Achternaam}";
+            }
+                
+        }
+
+        private void btnAnnuleren_Click(object sender, RoutedEventArgs e)
+        {
+            MyClassLibrary.Afspraak.DeleteAfspraak((MyClassLibrary.Afspraak)lbAfspraken.SelectedItem);
+            lbAfspraken.Items.Clear();
+            foreach (MyClassLibrary.Afspraak item in MyClassLibrary.Afspraak.GetAfspraken(Klant))
+            {
+                lbAfspraken.Items.Add(item);
+            }
         }
     }
 }
