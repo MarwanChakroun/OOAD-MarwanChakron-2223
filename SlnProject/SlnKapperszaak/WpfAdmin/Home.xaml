@@ -12,13 +12,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="113*"/>
             <RowDefinition Height="50*"/>
-            <RowDefinition Height="175*"/>
-            <RowDefinition Height="113*"/>
+            <RowDefinition Height="241*"/>
+            <RowDefinition Height="46*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="2" Background="LightGray" x:Name="PanelKappers" />
-        <ListBox Grid.Row="3" x:Name="lbKappers" Margin="0,0,0,67" />
-        <Label Content="Filter op specialiteit: " HorizontalAlignment="Left" Margin="27,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontSize="16"/>
-        <ComboBox SelectionChanged="ComboBox_SelectionChanged" x:Name="cbFilters" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="160"/>
+        <WrapPanel Grid.Row="2" Background="LightGray" x:Name="PanelKappers" >
+            <StackPanel/>
+        </WrapPanel>
+        <Label Content="Filter op specialiteit: " HorizontalAlignment="Left" Margin="27,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontSize="16" Height="32" Width="155"/>
+        <ComboBox SelectionChanged="ComboBox_SelectionChanged" x:Name="cbFilters" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="160" Height="22"/>
+
+        <Button Content="Log in" HorizontalAlignment="Left" Margin="671,21,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
+        <Label x:Name="lblWelcome" Content="Welcome administrator" HorizontalAlignment="Right" Margin="0,45,33,0" VerticalAlignment="Top" Width="191"/>
+        <Button x:Name="btnAfspraakbeheren" Content="Afspraken beheren" Click="btnAfspraakClick" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="490" Source="/header.png"/>
 
     </Grid>
 </Page>

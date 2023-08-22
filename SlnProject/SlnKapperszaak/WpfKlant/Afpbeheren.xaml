@@ -7,12 +7,17 @@
         mc:Ignorable="d"
         Title="KLANT - Afspraken beheren" Height="343" Width="382">
     <Grid>
-        <Label Content="Mijn Afspraken" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
-        <ListBox SelectionChanged="lbAfspraken_SelectionChanged" x:Name="lbAfspraken" Margin="10,49,10,127"/>
-        <Label Content="Details" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label x:Name="lblDate" Content="" HorizontalAlignment="Left" Margin="15,242,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblKapper" Content="" HorizontalAlignment="Left" Margin="15,273,0,0" VerticalAlignment="Top"/>
-        <Button Content="Annuleren" Click="btnAnnuleren_Click" HorizontalAlignment="Left" Margin="284,281,0,0" VerticalAlignment="Top" Height="26" Width="68"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Mijn Afspraken" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold"/>
+        <ListBox Grid.Row="1" SelectionChanged="lbAfspraken_SelectionChanged" x:Name="lbAfspraken" Margin="10,49,10,127"/>
+        <Label Grid.Row="2" Content="Details" HorizontalAlignment="Left"  VerticalAlignment="Top" FontWeight="Bold" Margin="20,10,0,0"/>
+        <Label Grid.Row="2" x:Name="lblDate" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="32,36,0,0"/>
+        <Label Grid.Row="2" x:Name="lblKapper" Content="" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="34,65,0,0"/>
+        <Button Grid.Row="2" Content="Annuleren" Click="btnAnnuleren_Click" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="26" Width="68" Margin="304,73,0,0"/>
 
     </Grid>
 </Window>

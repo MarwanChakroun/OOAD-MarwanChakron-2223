@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MyClassLibrary;
 
 namespace WpfAdmin
 {
@@ -23,7 +24,8 @@ namespace WpfAdmin
         public MainWindow()
         {
             InitializeComponent();
-            mainframe.Content = new Home();
+            mainframe.Content = new Home(this);
         }
+
     }
 }

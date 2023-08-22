@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Media.Imaging;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace MyClassLibrary
 {
@@ -106,6 +107,30 @@ namespace MyClassLibrary
             }
         }
 
+        static public Gebruiker GetGebById(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM [Gebruiker] where id like '{id}'", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            return new Gebruiker(Convert.ToInt32(reader["id"]), Convert.ToString(reader["voornaam"]), Convert.ToString(reader["achternaam"]),
+                                Convert.ToString(reader["login"]), Convert.ToString(reader["paswoord"]), (eGeslacht)Convert.ToInt32(reader["geslacht"]), (eRol)Convert.ToInt32(reader["rol"]),
+                                (reader["email"] == null) ? String.Empty : Convert.ToString(reader["email"]),
+                                (reader["gsm"] == DBNull.Value) ? String.Empty : Convert.ToString(reader["gsm"]));
+                        }
+
+                    }
+                }
+                conn.Close();
+            }
+            return new Gebruiker(-1, "", "", "", "", eGeslacht.Null, eRol.Klant);
+        }
+
         static public Gebruiker GetGebByUsername(string usrname)
         {
             using (SqlConnection conn = new SqlConnection(connString))
@@ -129,7 +154,45 @@ namespace MyClassLibrary
             }
             return new Gebruiker(-1,"","","","",eGeslacht.Null, eRol.Klant);
         }
-       
+
+        static public Gebruiker LogGebruikerIn(string username, string password)
+        {
+            string hashpsw = "";
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                byte[] hashBytes = sha.ComputeHash(passwordBytes);
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in hashBytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                hashpsw = sb.ToString();
+            }
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"select * from Gebruiker where login like '{username}' and paswoord like '{hashpsw}'", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            
+                            return Gebruiker.GetGebByUsername(username);
+                            
+                        }
+                        else
+                        {
+                            return new Gebruiker(-1, "", "", "", "", eGeslacht.Null, eRol.Klant);
+                        }
+
+                    }
+                }
+                conn.Close();
+            }
+        }
+        
 
         public override string ToString()
         {

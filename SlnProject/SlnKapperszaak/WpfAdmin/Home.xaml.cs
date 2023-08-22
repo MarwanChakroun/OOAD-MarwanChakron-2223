@@ -21,6 +21,8 @@ namespace WpfAdmin
     /// </summary>
     public partial class Home : Page
     {
+
+        Gebruiker usr = new Gebruiker(-1, "", "", "", "", eGeslacht.Null, eRol.Klant);
         public void initPanel(List<Kapper> kappersinp)
         {
             PanelKappers.Children.Clear();
@@ -38,6 +40,7 @@ namespace WpfAdmin
                 }
 
                 StackPanel mainsp = new StackPanel();
+                
                 mainsp.Margin = new Thickness(10, 5, 0, 0);
                 mainsp.Width = 250;
 
@@ -63,22 +66,30 @@ namespace WpfAdmin
                 PanelKappers.Children.Add(mainsp);
 
 
-                lbKappers.Items.Add(kapper);
             }
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             initPanel(Kapper.GetKappersBySpec((Specialiteit)cbFilters.SelectedItem));
-            
+
         }
 
-        public Home()
+        private MainWindow Mainwin;
+        private void btnAfspraakClick(object sender, RoutedEventArgs e)
         {
+            Afpbeheren afp = new Afpbeheren();
+            afp.Show();
+        }
+        
+        public Home(MainWindow mw)
+        {
+            Mainwin = mw;
             InitializeComponent();
             cbFilters.ItemsSource = Specialiteit.GetAllSpecs();
             initPanel(Kapper.GetAllKappers());
-            
+            //btnAfspraakbeheren.Visibility = Visibility.Hidden;
         }
+
     }
 }

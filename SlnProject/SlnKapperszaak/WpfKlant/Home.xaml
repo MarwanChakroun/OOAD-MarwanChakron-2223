@@ -24,6 +24,6 @@
         <Button Content="Log in" Click="btnLoginClick" HorizontalAlignment="Left" Margin="671,21,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
         <Label x:Name="lblWelcome" Content="Label" HorizontalAlignment="Right" Margin="0,45,33,0" VerticalAlignment="Top" Width="191"/>
         <Button x:Name="btnAfspraakbeheren" Content="Afspraken beheren" Click="btnAfspraakClick" HorizontalAlignment="Left" Margin="576,22,0,0" VerticalAlignment="Top" Height="23" Width="78"/>
-
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="490" Source="/header.png"/>
     </Grid>
 </Page>

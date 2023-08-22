@@ -11,48 +11,40 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Configuration;
-using System.Data.SqlClient;
 using MyClassLibrary;
+using System.Configuration;
 
-namespace WpfKlant
+
+namespace WpfAdmin
 {
     /// <summary>
     /// Logique d'interaction pour Login.xaml
     /// </summary>
     public partial class Login : Window
     {
-
         static string connString = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
-        private MainWindow Mainwin;
 
-
-        public Login(MainWindow mainwininp)
+        public Login()
         {
             InitializeComponent();
-            Mainwin = mainwininp;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(txtbUsername.Text == "" || txtbUsername.Text == "")
+            if (txtbUsername.Text == "" || txtbUsername.Text == "")
             {
                 return;
-                
+
             }
 
             Gebruiker gb = Gebruiker.LogGebruikerIn(txtbUsername.Text, txtbPassword.Text);
 
             if (gb.Id != -1)
             {
-                if(gb.Rol != eRol.Admin)
-                {
-                    lblComment.Content = "Dit Toepassing dient alleen voor administrators";
-                    return;
-                }
-
                 lblComment.Content = "Connected";
-                Mainwin.ReloadFrame(gb);
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                //Mainwin.ReloadFrame(gb);
                 this.Close();
             }
             else

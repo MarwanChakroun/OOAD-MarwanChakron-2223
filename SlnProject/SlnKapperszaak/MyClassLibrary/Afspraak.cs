@@ -29,6 +29,29 @@ namespace MyClassLibrary
             Kpper = kpprinp;
         }
 
+        static public List<Afspraak> GetAll()
+        {
+            List<Afspraak> Afspraken = new List<Afspraak>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM [Afspraak]", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Afspraken.Add(new Afspraak(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["datum"]), TimeSpan.Parse(Convert.ToString(reader["tijd"])),
+                                "", Gebruiker.GetGebById(Convert.ToInt32(reader["klant_id"])), Kapper.GetKapperById(Convert.ToInt32(reader["kapper_id"]))));
+                        }
+
+                    }
+                }
+                conn.Close();
+            }
+            return Afspraken;
+        }
+
         static public List<Afspraak> GetAfspraken(Gebruiker usr)
         {
             List<Afspraak> Afspraken = new List<Afspraak>();
@@ -43,6 +66,29 @@ namespace MyClassLibrary
                         {
                             Afspraken.Add(new Afspraak(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["datum"]), TimeSpan.Parse(Convert.ToString(reader["tijd"])),
                                 "", usr, Kapper.GetKapperById(Convert.ToInt32(reader["kapper_id"]))));
+                        }
+
+                    }
+                }
+                conn.Close();
+            }
+            return Afspraken;
+        }
+
+        static public List<Afspraak> GetAfsprakenByDate(DateTime dt)
+        {
+            List<Afspraak> Afspraken = new List<Afspraak>();
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM [Afspraak] where datum like '{dt.ToString("yyyy-MM-dd")}'", conn))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Afspraken.Add(new Afspraak(Convert.ToInt32(reader["id"]), Convert.ToDateTime(reader["datum"]), TimeSpan.Parse(Convert.ToString(reader["tijd"])),
+                                "", Gebruiker.GetGebById(Convert.ToInt32(reader["klant_id"])), Kapper.GetKapperById(Convert.ToInt32(reader["kapper_id"]))));
                         }
 
                     }
